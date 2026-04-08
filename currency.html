@@ -9,73 +9,10 @@
 <link rel="icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <title>محول العملات - حاسبتي المالية</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#001231;--bg-low:#011a3f;--bg-container:#051f43;--bg-high:#13294e;--bg-highest:#1f345a;--bg-bright:#24395f;--bg-darkest:#000d27;--gold:#e5c27d;--gold-dim:#ffdea1;--gold-container:#362600;--gold-on:#402d00;--teal:#6edab4;--cream:#F4EFDF;--text:#d7e2ff;--text-sub:#c4c6cf;--red:#ffb4ab}
-body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;direction:rtl}
-.top-bar{background:var(--bg-darkest);display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:64px;position:sticky;top:0;z-index:50}
-.logo-wrap{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--cream);text-decoration:none}
-.logo-icon{background:var(--gold-container);padding:4px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.logo-icon .material-symbols-outlined{color:var(--gold);font-size:24px}
-.menu-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;color:var(--text-sub);cursor:pointer;border-radius:8px;transition:all 0.2s}
-.menu-btn:hover{background:rgba(229,194,125,0.1);color:var(--gold)}
-.menu-btn .material-symbols-outlined{font-size:26px}
-.page-title{text-align:center;padding:16px 0 12px;font-size:18px;font-weight:700;color:var(--gold);border-bottom:0.5px solid rgba(229,194,125,0.08);margin-bottom:12px}
-.container{max-width:600px;margin:0 auto;padding:0 16px 40px}
-.card{background:var(--bg-container);border:0.5px solid rgba(229,194,125,0.12);border-radius:12px;padding:1rem 1.1rem;margin-bottom:10px}
-.card-teal{border-color:rgba(110,218,180,0.2)}
-.ct{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:11px;display:flex;align-items:center;gap:6px}
-.ct .d{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
-.lbl{font-size:11.5px;color:rgba(215,226,255,0.5);display:block;margin-bottom:3px}
-.inp{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;transition:border 0.2s;-webkit-appearance:none;font-family:inherit}
-.inp:focus{border-color:var(--gold)}
-.inp::placeholder{color:rgba(215,226,255,0.2)}
-.sel{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;-webkit-appearance:none;font-family:inherit}
-.sel option{background:var(--bg-high);color:var(--cream)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.rb{background:linear-gradient(135deg,rgba(229,194,125,0.1),rgba(229,194,125,0.03));border:0.5px solid rgba(229,194,125,0.2);border-radius:12px;padding:1rem 1.1rem;text-align:center;margin-top:10px}
-.rl{font-size:11.5px;color:rgba(215,226,255,0.5);margin-bottom:4px}
-.rv{font-size:26px;font-weight:500;color:var(--gold)}
-.rs{font-size:14px;color:rgba(215,226,255,0.55);margin-top:8px}
-.rs strong{color:var(--cream);font-weight:500}
-.rs-row{display:flex;justify-content:center;gap:24px;margin-top:8px;flex-wrap:wrap}
-.rs-item{font-size:14px;color:rgba(215,226,255,0.55)}
-.rs-item strong{color:var(--cream);font-weight:500;font-size:16px;display:block;margin-top:2px}
-.pos{color:var(--teal)}.neg{color:var(--red)}
-.mbtn{padding:9px 16px;border-radius:8px;font-size:12px;cursor:pointer;border:1px solid rgba(229,194,125,0.18);background:var(--bg-high);color:rgba(215,226,255,0.5);font-weight:500;transition:all 0.2s;font-family:inherit}
-.mbtn.active{border-color:var(--gold);background:rgba(229,194,125,0.1);color:var(--gold)}
-.clear-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 16px;border-radius:8px;border:0.5px solid rgba(229,194,125,0.15);background:transparent;color:var(--text-sub);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:12px}
-.clear-btn:hover{border-color:var(--gold);color:var(--gold)}
-.clear-btn .material-symbols-outlined{font-size:16px}
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
-.sidebar-overlay.open{opacity:1;pointer-events:auto}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--bg-darkest);z-index:201;transition:right 0.3s ease;overflow-y:auto;padding:0 0 32px}
-.sidebar.open{right:0}
-.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-header span{font-size:16px;font-weight:700;color:var(--cream)}
-.sidebar-close{background:none;border:none;color:var(--text-sub);cursor:pointer;padding:4px}
-.sidebar-close .material-symbols-outlined{font-size:22px}
-.sidebar-cat{padding:14px 20px 6px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.5px}
-.sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--text-sub);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.15s}
-.sidebar-link:hover,.sidebar-link.active{background:rgba(229,194,125,0.08);color:var(--cream)}
-.sidebar-link .material-symbols-outlined{font-size:20px;color:var(--teal)}
-.sidebar-link.active .material-symbols-outlined{color:var(--gold)}
-.sidebar-home{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:700;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-home .material-symbols-outlined{font-size:20px}
-@media(max-width:400px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}}
-.swap-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(229,194,125,0.2);background:var(--bg-high);color:var(--gold);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;flex-shrink:0}
-.swap-btn:hover{transform:rotate(180deg)}
-</style>
 </head>
 <body>
-
-<header class="top-bar">
-  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
-  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
-</header>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 <nav class="sidebar" id="sidebar">
@@ -85,40 +22,52 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
   <a class="sidebar-link" href="stocks.html"><span class="material-symbols-outlined">show_chart</span>متوسط السهم</a>
   <a class="sidebar-link" href="profit.html"><span class="material-symbols-outlined">monitoring</span>الربح والخسارة</a>
   <a class="sidebar-link" href="split.html"><span class="material-symbols-outlined">call_split</span>تقسيم الأسهم</a>
-  <a class="sidebar-link" href="dividend.html"><span class="material-symbols-outlined">savings</span>التوزيعات</a>
+  <a class="sidebar-link" href="dividend.html"><span class="material-symbols-outlined">savings</span>توزيعات الأرباح</a>
   <a class="sidebar-link" href="breakeven.html"><span class="material-symbols-outlined">center_focus_strong</span>نقطة التعادل</a>
   <a class="sidebar-link" href="compound.html"><span class="material-symbols-outlined">account_balance</span>الفائدة المركبة</a>
   <div class="sidebar-cat">الزكاة</div>
   <a class="sidebar-link" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span>حاسبة الزكاة</a>
   <a class="sidebar-link" href="zakats.html"><span class="material-symbols-outlined">mosque</span>زكاة الأسهم</a>
-  <div class="sidebar-cat">الذهب والعملات والتمويل</div>
-  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>الذهب</a>
-  <a class="sidebar-link active" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>العملات</a>
-  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>القرض</a>
+  <div class="sidebar-cat">الذهب والعملات</div>
+  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>متوسط تكلفة الذهب</a>
+  <a class="sidebar-link active" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>محول العملات</a>
+  <div class="sidebar-cat">التمويل</div>
+  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>حاسبة القرض</a>
+
+  <div class="sidebar-footer">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+    <div class="sidebar-copy">© 2026 حاسبتي المالية</div>
+  </div>
 </nav>
 
+<header class="top-bar">
+  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
+  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
+</header>
 <div class="page-title">محول العملات</div>
-<div class="container">
+<div class="container fade-in">
   <div class="card"><div class="ct"><span class="d"></span>محول العملات</div><div style="display:flex;align-items:end;gap:8px"><div style="flex:1"><label class="lbl">المبلغ</label><input class="inp" type="number" id="cxA" value="1000" inputmode="decimal" oninput="cXR()"></div><div style="flex:1"><label class="lbl">من</label><select class="sel" id="cxF" onchange="cXR()"><option value="SAR">ريال سعودي</option><option value="USD" selected>دولار أمريكي</option><option value="EUR">يورو</option><option value="GBP">جنيه إسترليني</option><option value="AED">درهم إماراتي</option><option value="KWD">دينار كويتي</option><option value="EGP">جنيه مصري</option><option value="TRY">ليرة تركية</option></select></div><button class="swap-btn" onclick="cxSw()">⇄</button><div style="flex:1"><label class="lbl">إلى</label><select class="sel" id="cxT" onchange="cXR()"><option value="SAR" selected>ريال سعودي</option><option value="USD">دولار أمريكي</option><option value="EUR">يورو</option><option value="GBP">جنيه إسترليني</option><option value="AED">درهم إماراتي</option><option value="KWD">دينار كويتي</option><option value="EGP">جنيه مصري</option><option value="TRY">ليرة تركية</option></select></div></div></div>
   <div class="rb" id="cxR"><div class="rl">الناتج</div><div class="rv" id="cxV">0</div><div class="rs" id="cxRt" style="margin-top:8px"></div><div id="cxSt" style="font-size:11px;color:rgba(215,226,255,0.3);margin-top:6px"></div></div>
   <button class="clear-btn" onclick="clearAll()"><span class="material-symbols-outlined">delete_sweep</span>مسح</button>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+  </div>
+  <div class="footer-copy">© 2026 حاسبتي المالية. جميع الحقوق محفوظة.</div>
+</footer>
+<script src="shared.js"></script>
 <script>
-function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('open')}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open')}
-function fmt(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n)}
-function fI(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n))}
-function show(id){document.getElementById(id).style.display='block'}
-function hide(id){document.getElementById(id).style.display='none'}
-function V(id){return +(document.getElementById(id).value)||0}
-const defR={USD:1,SAR:3.75,EUR:0.92,GBP:0.79,AED:3.67,KWD:0.31,EGP:50.5,TRY:36.2};let lR=null;
-async function loadR(){try{const res=await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json');const d=await res.json();if(d&&d.usd){lR={USD:1,SAR:d.usd.sar,EUR:d.usd.eur,GBP:d.usd.gbp,AED:d.usd.aed,KWD:d.usd.kwd,EGP:d.usd.egp,TRY:d.usd.try};document.getElementById('cxSt').textContent='أسعار محدّثة'}}catch(e){document.getElementById('cxSt').textContent='أسعار تقريبية'}cXR()}
-function gRt(){return lR||defR}
+async function init(){await loadR();document.getElementById('cxSt').textContent=lR?'أسعار محدّثة':'أسعار تقريبية';cXR()}
 function cXR(){const amt=V('cxA'),from=document.getElementById('cxF').value,to=document.getElementById('cxT').value;const rates=gRt(),inUSD=amt/rates[from],result=inUSD*rates[to],rate=rates[to]/rates[from];show('cxR');document.getElementById('cxV').textContent=fmt(result);document.getElementById('cxRt').innerHTML='سعر الصرف: <strong>1 '+from+' = '+rate.toFixed(4)+' '+to+'</strong>'}
 function cxSw(){const f=document.getElementById('cxF'),t=document.getElementById('cxT');const tmp=f.value;f.value=t.value;t.value=tmp;cXR()}
 function clearAll(){document.getElementById('cxA').value='1000';cXR()}
-loadR();
+init();
 </script>
 </body>
 </html>

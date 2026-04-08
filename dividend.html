@@ -9,72 +9,10 @@
 <link rel="icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <title>توزيعات الأرباح - حاسبتي المالية</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#001231;--bg-low:#011a3f;--bg-container:#051f43;--bg-high:#13294e;--bg-highest:#1f345a;--bg-bright:#24395f;--bg-darkest:#000d27;--gold:#e5c27d;--gold-dim:#ffdea1;--gold-container:#362600;--gold-on:#402d00;--teal:#6edab4;--cream:#F4EFDF;--text:#d7e2ff;--text-sub:#c4c6cf;--red:#ffb4ab}
-body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;direction:rtl}
-.top-bar{background:var(--bg-darkest);display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:64px;position:sticky;top:0;z-index:50}
-.logo-wrap{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--cream);text-decoration:none}
-.logo-icon{background:var(--gold-container);padding:4px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.logo-icon .material-symbols-outlined{color:var(--gold);font-size:24px}
-.menu-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;color:var(--text-sub);cursor:pointer;border-radius:8px;transition:all 0.2s}
-.menu-btn:hover{background:rgba(229,194,125,0.1);color:var(--gold)}
-.menu-btn .material-symbols-outlined{font-size:26px}
-.page-title{text-align:center;padding:16px 0 12px;font-size:18px;font-weight:700;color:var(--gold);border-bottom:0.5px solid rgba(229,194,125,0.08);margin-bottom:12px}
-.container{max-width:600px;margin:0 auto;padding:0 16px 40px}
-.card{background:var(--bg-container);border:0.5px solid rgba(229,194,125,0.12);border-radius:12px;padding:1rem 1.1rem;margin-bottom:10px}
-.card-teal{border-color:rgba(110,218,180,0.2)}
-.ct{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:11px;display:flex;align-items:center;gap:6px}
-.ct .d{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
-.lbl{font-size:11.5px;color:rgba(215,226,255,0.5);display:block;margin-bottom:3px}
-.inp{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;transition:border 0.2s;-webkit-appearance:none;font-family:inherit}
-.inp:focus{border-color:var(--gold)}
-.inp::placeholder{color:rgba(215,226,255,0.2)}
-.sel{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;-webkit-appearance:none;font-family:inherit}
-.sel option{background:var(--bg-high);color:var(--cream)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.rb{background:linear-gradient(135deg,rgba(229,194,125,0.1),rgba(229,194,125,0.03));border:0.5px solid rgba(229,194,125,0.2);border-radius:12px;padding:1rem 1.1rem;text-align:center;margin-top:10px}
-.rl{font-size:11.5px;color:rgba(215,226,255,0.5);margin-bottom:4px}
-.rv{font-size:26px;font-weight:500;color:var(--gold)}
-.rs{font-size:14px;color:rgba(215,226,255,0.55);margin-top:8px}
-.rs strong{color:var(--cream);font-weight:500}
-.rs-row{display:flex;justify-content:center;gap:24px;margin-top:8px;flex-wrap:wrap}
-.rs-item{font-size:14px;color:rgba(215,226,255,0.55)}
-.rs-item strong{color:var(--cream);font-weight:500;font-size:16px;display:block;margin-top:2px}
-.pos{color:var(--teal)}.neg{color:var(--red)}
-.mbtn{padding:9px 16px;border-radius:8px;font-size:12px;cursor:pointer;border:1px solid rgba(229,194,125,0.18);background:var(--bg-high);color:rgba(215,226,255,0.5);font-weight:500;transition:all 0.2s;font-family:inherit}
-.mbtn.active{border-color:var(--gold);background:rgba(229,194,125,0.1);color:var(--gold)}
-.clear-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 16px;border-radius:8px;border:0.5px solid rgba(229,194,125,0.15);background:transparent;color:var(--text-sub);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:12px}
-.clear-btn:hover{border-color:var(--gold);color:var(--gold)}
-.clear-btn .material-symbols-outlined{font-size:16px}
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
-.sidebar-overlay.open{opacity:1;pointer-events:auto}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--bg-darkest);z-index:201;transition:right 0.3s ease;overflow-y:auto;padding:0 0 32px}
-.sidebar.open{right:0}
-.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-header span{font-size:16px;font-weight:700;color:var(--cream)}
-.sidebar-close{background:none;border:none;color:var(--text-sub);cursor:pointer;padding:4px}
-.sidebar-close .material-symbols-outlined{font-size:22px}
-.sidebar-cat{padding:14px 20px 6px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.5px}
-.sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--text-sub);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.15s}
-.sidebar-link:hover,.sidebar-link.active{background:rgba(229,194,125,0.08);color:var(--cream)}
-.sidebar-link .material-symbols-outlined{font-size:20px;color:var(--teal)}
-.sidebar-link.active .material-symbols-outlined{color:var(--gold)}
-.sidebar-home{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:700;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-home .material-symbols-outlined{font-size:20px}
-@media(max-width:400px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}}
-
-</style>
 </head>
 <body>
-
-<header class="top-bar">
-  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
-  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
-</header>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 <nav class="sidebar" id="sidebar">
@@ -84,33 +22,47 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
   <a class="sidebar-link" href="stocks.html"><span class="material-symbols-outlined">show_chart</span>متوسط السهم</a>
   <a class="sidebar-link" href="profit.html"><span class="material-symbols-outlined">monitoring</span>الربح والخسارة</a>
   <a class="sidebar-link" href="split.html"><span class="material-symbols-outlined">call_split</span>تقسيم الأسهم</a>
-  <a class="sidebar-link active" href="dividend.html"><span class="material-symbols-outlined">savings</span>التوزيعات</a>
+  <a class="sidebar-link active" href="dividend.html"><span class="material-symbols-outlined">savings</span>توزيعات الأرباح</a>
   <a class="sidebar-link" href="breakeven.html"><span class="material-symbols-outlined">center_focus_strong</span>نقطة التعادل</a>
   <a class="sidebar-link" href="compound.html"><span class="material-symbols-outlined">account_balance</span>الفائدة المركبة</a>
   <div class="sidebar-cat">الزكاة</div>
   <a class="sidebar-link" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span>حاسبة الزكاة</a>
   <a class="sidebar-link" href="zakats.html"><span class="material-symbols-outlined">mosque</span>زكاة الأسهم</a>
-  <div class="sidebar-cat">الذهب والعملات والتمويل</div>
-  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>الذهب</a>
-  <a class="sidebar-link" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>العملات</a>
-  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>القرض</a>
+  <div class="sidebar-cat">الذهب والعملات</div>
+  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>متوسط تكلفة الذهب</a>
+  <a class="sidebar-link" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>محول العملات</a>
+  <div class="sidebar-cat">التمويل</div>
+  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>حاسبة القرض</a>
+
+  <div class="sidebar-footer">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+    <div class="sidebar-copy">© 2026 حاسبتي المالية</div>
+  </div>
 </nav>
 
+<header class="top-bar">
+  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
+  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
+</header>
 <div class="page-title">توزيعات الأرباح</div>
-<div class="container">
+<div class="container fade-in">
   <div class="card"><div class="ct"><span class="d" style="background:var(--teal)"></span>توزيعات الأرباح</div><div class="g2"><div><label class="lbl">سعر السهم</label><input class="inp" type="number" id="dvp" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cDv()"></div><div><label class="lbl">عدد الأسهم</label><input class="inp" type="number" id="dvq" placeholder="0" inputmode="decimal" oninput="cDv()"></div><div><label class="lbl">التوزيع للسهم (سنوي)</label><input class="inp" type="number" id="dvd" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cDv()"></div><div><label class="lbl">سنوات الاحتفاظ</label><input class="inp" type="number" id="dvy" value="5" min="1" inputmode="decimal" oninput="cDv()"></div></div></div>
   <div class="rb" id="dvR" style="display:none"><div class="g3" style="gap:12px"><div><div class="rl">العائد السنوي</div><div class="rv" id="dvA" style="font-size:20px">0</div></div><div><div class="rl">نسبة العائد</div><div class="rv" id="dvY" style="font-size:20px">0%</div></div><div><div class="rl">إجمالي التوزيعات</div><div class="rv" id="dvT" style="font-size:20px;color:var(--teal)">0</div></div></div><div class="rs-row" style="margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(229,194,125,0.08)"><div class="rs-item">إجمالي التكلفة<strong id="dvCost">0</strong></div><div class="rs-item">القيمة مع التوزيعات<strong id="dvTotal" style="color:var(--teal)">0</strong></div></div></div>
   <button class="clear-btn" onclick="clearAll()"><span class="material-symbols-outlined">delete_sweep</span>مسح</button>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+  </div>
+  <div class="footer-copy">© 2026 حاسبتي المالية. جميع الحقوق محفوظة.</div>
+</footer>
+<script src="shared.js"></script>
 <script>
-function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('open')}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open')}
-function fmt(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n)}
-function fI(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n))}
-function show(id){document.getElementById(id).style.display='block'}
-function hide(id){document.getElementById(id).style.display='none'}
-function V(id){return +(document.getElementById(id).value)||0}
 function cDv(){const p=V('dvp'),q=V('dvq'),d=V('dvd'),y=V('dvy')||1;if(p>0&&q>0&&d>0){const a=d*q,yld=(d/p)*100,t=a*y,cost=p*q,totalVal=cost+t;show('dvR');document.getElementById('dvA').textContent=fmt(a);document.getElementById('dvY').textContent=yld.toFixed(2)+'%';document.getElementById('dvT').textContent=fmt(t);document.getElementById('dvCost').textContent=fmt(cost);document.getElementById('dvTotal').textContent=fmt(totalVal)}else hide('dvR')}
 function clearAll(){['dvp','dvq','dvd'].forEach(id=>{document.getElementById(id).value=''});document.getElementById('dvy').value='5';hide('dvR')}
 </script>

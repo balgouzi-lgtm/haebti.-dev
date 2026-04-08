@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
-<title>حاسبة الزكاة - حاسبتي المالية</title>
+<title>الربح والخسارة - حاسبتي المالية</title>
 </head>
 <body>
 
@@ -20,13 +20,13 @@
   <a class="sidebar-home" href="index.html"><span class="material-symbols-outlined">home</span>الرئيسية</a>
   <div class="sidebar-cat">الأسهم والمحفظة</div>
   <a class="sidebar-link" href="stocks.html"><span class="material-symbols-outlined">show_chart</span>متوسط السهم</a>
-  <a class="sidebar-link" href="profit.html"><span class="material-symbols-outlined">monitoring</span>الربح والخسارة</a>
+  <a class="sidebar-link active" href="profit.html"><span class="material-symbols-outlined">monitoring</span>الربح والخسارة</a>
   <a class="sidebar-link" href="split.html"><span class="material-symbols-outlined">call_split</span>تقسيم الأسهم</a>
   <a class="sidebar-link" href="dividend.html"><span class="material-symbols-outlined">savings</span>توزيعات الأرباح</a>
   <a class="sidebar-link" href="breakeven.html"><span class="material-symbols-outlined">center_focus_strong</span>نقطة التعادل</a>
   <a class="sidebar-link" href="compound.html"><span class="material-symbols-outlined">account_balance</span>الفائدة المركبة</a>
   <div class="sidebar-cat">الزكاة</div>
-  <a class="sidebar-link active" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span>حاسبة الزكاة</a>
+  <a class="sidebar-link" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span>حاسبة الزكاة</a>
   <a class="sidebar-link" href="zakats.html"><span class="material-symbols-outlined">mosque</span>زكاة الأسهم</a>
   <div class="sidebar-cat">الذهب والعملات</div>
   <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>متوسط تكلفة الذهب</a>
@@ -46,11 +46,10 @@
   <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
   <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
 </header>
-<div class="page-title">حاسبة الزكاة</div>
+<div class="page-title">الربح والخسارة</div>
 <div class="container fade-in">
-  <div class="card"><div class="ct"><span class="d" style="background:var(--teal)"></span>الأصول الخاضعة للزكاة</div><div style="display:grid;gap:10px"><div><label class="lbl">النقد والحسابات البنكية</label><input class="inp" type="number" id="zc" placeholder="0.00" inputmode="decimal" oninput="cZ()"></div><div><label class="lbl">قيمة الأسهم والاستثمارات</label><input class="inp" type="number" id="zs" placeholder="0.00" inputmode="decimal" oninput="cZ()"></div><div><label class="lbl">قيمة الذهب والفضة</label><input class="inp" type="number" id="zg" placeholder="0.00" inputmode="decimal" oninput="cZ()"></div><div><label class="lbl">الديون المستحقة لك</label><input class="inp" type="number" id="zdo" placeholder="0.00" inputmode="decimal" oninput="cZ()"></div></div></div>
-  <div class="card"><div class="ct"><span class="d" style="background:var(--red)"></span>الخصومات</div><div><label class="lbl">الديون المستحقة عليك</label><input class="inp" type="number" id="zd" placeholder="0.00" inputmode="decimal" oninput="cZ()"></div></div>
-  <div class="rb" id="zr" style="display:none"><div class="rl">مبلغ الزكاة (٢.٥٪)</div><div class="rv" id="za">0</div><div class="rs">صافي الأصول: <strong id="zn">0</strong></div></div>
+  <div class="card"><div class="ct"><span class="d"></span>بيانات الصفقة</div><div class="g2"><div><label class="lbl">سعر الشراء</label><input class="inp" type="number" id="pb" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cP()"></div><div><label class="lbl">سعر البيع</label><input class="inp" type="number" id="ps" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cP()"></div><div><label class="lbl">عدد الأسهم / الوحدات</label><input class="inp" type="number" id="pq" placeholder="0" inputmode="decimal" oninput="cP()"></div><div><label class="lbl">العمولة (اختياري)</label><input class="inp" type="number" id="pf" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cP()"></div></div></div>
+  <div class="rb" id="pr" style="display:none"><div class="rs-row" style="margin-top:0;margin-bottom:12px"><div class="rs-item">إجمالي التكلفة<strong id="pCost">0</strong></div><div class="rs-item">القيمة السوقية<strong id="pValue">0</strong></div></div><div class="rl">صافي الربح / الخسارة</div><div class="rv" id="pa">0</div><div id="pp" style="font-size:14px;margin-top:4px"></div></div>
   <button class="clear-btn" onclick="clearAll()"><span class="material-symbols-outlined">delete_sweep</span>مسح</button>
 </div>
 
@@ -64,8 +63,8 @@
 </footer>
 <script src="shared.js"></script>
 <script>
-function cZ(){const net=V('zc')+V('zs')+V('zg')+V('zdo')-V('zd'),zk=net>0?net*0.025:0;if(net>0){show('zr');document.getElementById('za').textContent=fmt(zk);document.getElementById('zn').textContent=fmt(net)}else hide('zr')}
-function clearAll(){['zc','zs','zg','zdo','zd'].forEach(id=>{document.getElementById(id).value=''});hide('zr')}
+function cP(){const b=V('pb'),s=V('ps'),q=V('pq'),f=V('pf');if(b>0&&s>0&&q>0){const cost=b*q,value=s*q,pf=(s-b)*q-f,pct=((s-b)/b)*100;show('pr');document.getElementById('pCost').textContent=fmt(cost);document.getElementById('pValue').textContent=fmt(value);const el=document.getElementById('pa');el.textContent=fmt(pf);el.className='rv '+(pf>=0?'pos':'neg');const pp=document.getElementById('pp');pp.textContent=(pct>=0?'+':'')+pct.toFixed(2)+'%';pp.className=pf>=0?'pos':'neg'}else hide('pr')}
+function clearAll(){['pb','ps','pq','pf'].forEach(id=>{document.getElementById(id).value=''});hide('pr')}
 </script>
 </body>
 </html>

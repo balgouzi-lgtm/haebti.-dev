@@ -9,72 +9,10 @@
 <link rel="icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <title>زكاة الأسهم - حاسبتي المالية</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#001231;--bg-low:#011a3f;--bg-container:#051f43;--bg-high:#13294e;--bg-highest:#1f345a;--bg-bright:#24395f;--bg-darkest:#000d27;--gold:#e5c27d;--gold-dim:#ffdea1;--gold-container:#362600;--gold-on:#402d00;--teal:#6edab4;--cream:#F4EFDF;--text:#d7e2ff;--text-sub:#c4c6cf;--red:#ffb4ab}
-body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;direction:rtl}
-.top-bar{background:var(--bg-darkest);display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:64px;position:sticky;top:0;z-index:50}
-.logo-wrap{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--cream);text-decoration:none}
-.logo-icon{background:var(--gold-container);padding:4px;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.logo-icon .material-symbols-outlined{color:var(--gold);font-size:24px}
-.menu-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:none;background:transparent;color:var(--text-sub);cursor:pointer;border-radius:8px;transition:all 0.2s}
-.menu-btn:hover{background:rgba(229,194,125,0.1);color:var(--gold)}
-.menu-btn .material-symbols-outlined{font-size:26px}
-.page-title{text-align:center;padding:16px 0 12px;font-size:18px;font-weight:700;color:var(--gold);border-bottom:0.5px solid rgba(229,194,125,0.08);margin-bottom:12px}
-.container{max-width:600px;margin:0 auto;padding:0 16px 40px}
-.card{background:var(--bg-container);border:0.5px solid rgba(229,194,125,0.12);border-radius:12px;padding:1rem 1.1rem;margin-bottom:10px}
-.card-teal{border-color:rgba(110,218,180,0.2)}
-.ct{font-size:13px;font-weight:500;color:var(--gold);margin-bottom:11px;display:flex;align-items:center;gap:6px}
-.ct .d{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
-.lbl{font-size:11.5px;color:rgba(215,226,255,0.5);display:block;margin-bottom:3px}
-.inp{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;transition:border 0.2s;-webkit-appearance:none;font-family:inherit}
-.inp:focus{border-color:var(--gold)}
-.inp::placeholder{color:rgba(215,226,255,0.2)}
-.sel{width:100%;padding:10px 12px;border:0.5px solid rgba(229,194,125,0.18);border-radius:8px;background:var(--bg-high);color:var(--cream);font-size:15px;outline:none;-webkit-appearance:none;font-family:inherit}
-.sel option{background:var(--bg-high);color:var(--cream)}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.rb{background:linear-gradient(135deg,rgba(229,194,125,0.1),rgba(229,194,125,0.03));border:0.5px solid rgba(229,194,125,0.2);border-radius:12px;padding:1rem 1.1rem;text-align:center;margin-top:10px}
-.rl{font-size:11.5px;color:rgba(215,226,255,0.5);margin-bottom:4px}
-.rv{font-size:26px;font-weight:500;color:var(--gold)}
-.rs{font-size:14px;color:rgba(215,226,255,0.55);margin-top:8px}
-.rs strong{color:var(--cream);font-weight:500}
-.rs-row{display:flex;justify-content:center;gap:24px;margin-top:8px;flex-wrap:wrap}
-.rs-item{font-size:14px;color:rgba(215,226,255,0.55)}
-.rs-item strong{color:var(--cream);font-weight:500;font-size:16px;display:block;margin-top:2px}
-.pos{color:var(--teal)}.neg{color:var(--red)}
-.mbtn{padding:9px 16px;border-radius:8px;font-size:12px;cursor:pointer;border:1px solid rgba(229,194,125,0.18);background:var(--bg-high);color:rgba(215,226,255,0.5);font-weight:500;transition:all 0.2s;font-family:inherit}
-.mbtn.active{border-color:var(--gold);background:rgba(229,194,125,0.1);color:var(--gold)}
-.clear-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 16px;border-radius:8px;border:0.5px solid rgba(229,194,125,0.15);background:transparent;color:var(--text-sub);font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:12px}
-.clear-btn:hover{border-color:var(--gold);color:var(--gold)}
-.clear-btn .material-symbols-outlined{font-size:16px}
-.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
-.sidebar-overlay.open{opacity:1;pointer-events:auto}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--bg-darkest);z-index:201;transition:right 0.3s ease;overflow-y:auto;padding:0 0 32px}
-.sidebar.open{right:0}
-.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-header span{font-size:16px;font-weight:700;color:var(--cream)}
-.sidebar-close{background:none;border:none;color:var(--text-sub);cursor:pointer;padding:4px}
-.sidebar-close .material-symbols-outlined{font-size:22px}
-.sidebar-cat{padding:14px 20px 6px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.5px}
-.sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--text-sub);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.15s}
-.sidebar-link:hover,.sidebar-link.active{background:rgba(229,194,125,0.08);color:var(--cream)}
-.sidebar-link .material-symbols-outlined{font-size:20px;color:var(--teal)}
-.sidebar-link.active .material-symbols-outlined{color:var(--gold)}
-.sidebar-home{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:700;border-bottom:0.5px solid rgba(229,194,125,0.1)}
-.sidebar-home .material-symbols-outlined{font-size:20px}
-@media(max-width:400px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}}
-
-</style>
 </head>
 <body>
-
-<header class="top-bar">
-  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
-  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
-</header>
 
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 <nav class="sidebar" id="sidebar">
@@ -84,20 +22,32 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
   <a class="sidebar-link" href="stocks.html"><span class="material-symbols-outlined">show_chart</span>متوسط السهم</a>
   <a class="sidebar-link" href="profit.html"><span class="material-symbols-outlined">monitoring</span>الربح والخسارة</a>
   <a class="sidebar-link" href="split.html"><span class="material-symbols-outlined">call_split</span>تقسيم الأسهم</a>
-  <a class="sidebar-link" href="dividend.html"><span class="material-symbols-outlined">savings</span>التوزيعات</a>
+  <a class="sidebar-link" href="dividend.html"><span class="material-symbols-outlined">savings</span>توزيعات الأرباح</a>
   <a class="sidebar-link" href="breakeven.html"><span class="material-symbols-outlined">center_focus_strong</span>نقطة التعادل</a>
   <a class="sidebar-link" href="compound.html"><span class="material-symbols-outlined">account_balance</span>الفائدة المركبة</a>
   <div class="sidebar-cat">الزكاة</div>
   <a class="sidebar-link" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span>حاسبة الزكاة</a>
   <a class="sidebar-link active" href="zakats.html"><span class="material-symbols-outlined">mosque</span>زكاة الأسهم</a>
-  <div class="sidebar-cat">الذهب والعملات والتمويل</div>
-  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>الذهب</a>
-  <a class="sidebar-link" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>العملات</a>
-  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>القرض</a>
+  <div class="sidebar-cat">الذهب والعملات</div>
+  <a class="sidebar-link" href="gold.html"><span class="material-symbols-outlined">payments</span>متوسط تكلفة الذهب</a>
+  <a class="sidebar-link" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span>محول العملات</a>
+  <div class="sidebar-cat">التمويل</div>
+  <a class="sidebar-link" href="loan.html"><span class="material-symbols-outlined">calculate</span>حاسبة القرض</a>
+
+  <div class="sidebar-footer">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+    <div class="sidebar-copy">© 2026 حاسبتي المالية</div>
+  </div>
 </nav>
 
+<header class="top-bar">
+  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
+  <button class="menu-btn" onclick="openSidebar()"><span class="material-symbols-outlined">menu</span></button>
+</header>
 <div class="page-title">زكاة الأسهم</div>
-<div class="container">
+<div class="container fade-in">
   <!-- اختيار السوق -->
   <div style="display:flex;gap:8px;margin-bottom:12px">
     <button class="mbtn active" id="zsM1" onclick="zsMarket('saudi')">السوق السعودي</button>
@@ -115,7 +65,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
         <div style="display:grid;gap:10px">
           <div><label class="lbl">عدد الأسهم</label><input class="inp" type="number" id="zsGQ" placeholder="0" inputmode="decimal" oninput="cZS()"></div>
           <div class="g2">
-            <div><label class="lbl">السعر السوقي</label><input class="inp" type="number" id="zsGP" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
+            <div><label class="lbl">السعر السوقي للسهم</label><input class="inp" type="number" id="zsGP" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
             <div><label class="lbl">القيمة الدفترية للسهم</label><input class="inp" type="number" id="zsGB" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
           </div>
         </div>
@@ -126,11 +76,11 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
         <div style="display:grid;gap:10px">
           <div class="g2">
             <div><label class="lbl">عدد الأسهم</label><input class="inp" type="number" id="zsAQ" placeholder="0" inputmode="decimal" oninput="cZS()"></div>
-            <div><label class="lbl">السعر السوقي</label><input class="inp" type="number" id="zsAP" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
+            <div><label class="lbl">السعر السوقي للسهم</label><input class="inp" type="number" id="zsAP" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
           </div>
           <div class="g2">
-            <div><label class="lbl">نية التملك</label><select class="sel" id="zsAI" onchange="cZS()"><option value="trade">مضاربة</option><option value="invest">استثمار</option></select></div>
-            <div><label class="lbl">الجزء الزكوي للسهم (اختياري)</label><input class="inp" type="number" id="zsAZ" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
+            <div><label class="lbl">نية التملك</label><select class="sel" id="zsAI" onchange="zsToggleZP();cZS()"><option value="trade">مضاربة</option><option value="invest">استثمار</option></select></div>
+            <div id="zsAZWrap" style="display:none"><label class="lbl">الجزء الزكوي للسهم (اختياري)</label><input class="inp" type="number" id="zsAZ" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
           </div>
         </div>
       </div>
@@ -147,9 +97,9 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
         </div>
         <div class="g2">
           <div><label class="lbl">سعر صرف الدولار/ريال</label><input class="inp" type="number" id="zsUX" placeholder="3.75" step="0.01" inputmode="decimal" oninput="cZS()"></div>
-          <div><label class="lbl">نية التملك</label><select class="sel" id="zsUI" onchange="cZS()"><option value="trade">مضاربة</option><option value="invest">استثمار</option></select></div>
+          <div><label class="lbl">نية التملك</label><select class="sel" id="zsUI" onchange="zsToggleZPUS();cZS()"><option value="trade">مضاربة</option><option value="invest">استثمار</option></select></div>
         </div>
-        <div><label class="lbl">الجزء الزكوي للسهم بالدولار (اختياري)</label><input class="inp" type="number" id="zsUZ" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
+        <div id="zsUZWrap" style="display:none"><label class="lbl">الجزء الزكوي للسهم بالدولار (اختياري)</label><input class="inp" type="number" id="zsUZ" placeholder="0.00" step="0.01" inputmode="decimal" oninput="cZS()"></div>
       </div>
     </div>
   </div>
@@ -159,47 +109,34 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
     <div class="rl">مقدار الزكاة (٢.٥٪)</div>
     <div class="rv" id="zsZakat">0</div>
     <div style="margin-top:12px;padding-top:12px;border-top:0.5px solid rgba(229,194,125,0.08)">
-      <div class="rs-row" style="margin-top:0">
-        <div class="rs-item">السوق<strong id="zsRMkt">-</strong></div>
-        <div class="rs-item">الطريقة<strong id="zsRMth">-</strong></div>
-        <div class="rs-item" id="zsRIntWrap">نية التملك<strong id="zsRInt">-</strong></div>
-      </div>
-      <div class="rs-row" style="margin-top:8px">
-        <div class="rs-item">عدد الأسهم<strong id="zsRQty">-</strong></div>
-        <div class="rs-item">سعر السهم<strong id="zsRPrc">-</strong></div>
-        <div class="rs-item">القيمة الإجمالية<strong id="zsRVal">-</strong></div>
-      </div>
-      <div class="rs-row" style="margin-top:8px" id="zsRWRow">
-        <div class="rs-item">الوعاء الزكوي<strong id="zsRWa">-</strong></div>
-      </div>
+      <div class="rs-row" style="margin-top:0"><div class="rs-item">السوق<strong id="zsRMkt">-</strong></div><div class="rs-item">الطريقة<strong id="zsRMth">-</strong></div><div class="rs-item" id="zsRIntWrap">نية التملك<strong id="zsRInt">-</strong></div></div>
+      <div class="rs-row" style="margin-top:8px"><div class="rs-item">عدد الأسهم<strong id="zsRQty">-</strong></div><div class="rs-item">سعر السهم<strong id="zsRPrc">-</strong></div><div class="rs-item">القيمة الإجمالية بالريال<strong id="zsRVal">-</strong></div></div>
+      <div class="rs-row" style="margin-top:8px" id="zsRWRow"><div class="rs-item">الوعاء الزكوي<strong id="zsRWa">-</strong></div></div>
     </div>
-    <div id="zsApproxNote" style="display:none;margin-top:10px;font-size:12px;color:rgba(255,180,171,0.8);background:rgba(255,180,171,0.06);border-radius:8px;padding:8px 10px">⚠️ هذه طريقة تقديرية مبسطة — يُنصح بالرجوع للقوائم المالية أو الجزء الزكوي المعلن من الشركة للحصول على نتيجة أدق.</div>
+    <div id="zsApproxNote" style="display:none;margin-top:10px;font-size:12px;color:rgba(255,180,171,0.8);background:rgba(255,180,171,0.06);border-radius:8px;padding:8px 10px">⚠️ هذه طريقة تقديرية مبسطة — تم احتساب الزكاة على كامل القيمة السوقية. يُنصح بالرجوع للقوائم المالية أو الجزء الزكوي المعلن من الشركة.</div>
   </div>
 
-  <div style="margin-top:12px;font-size:12px;color:rgba(215,226,255,0.45);background:var(--bg-high);border-radius:8px;padding:10px 12px;line-height:1.8">
-    <span style="color:var(--gold)">تنبيه:</span> الطريقة العامة تحتاج إلى القيمة الدفترية للسهم حتى يكتمل الاحتساب على صورته الأصلية، أما الطرق التقديرية فهي تقريبية للمساعدة والتنظيم فقط.
-  </div>
-  <div style="margin-top:8px;font-size:11px;color:rgba(215,226,255,0.35);background:var(--bg-high);border-radius:8px;padding:10px 12px;line-height:1.8">
-    <span style="color:rgba(215,226,255,0.5)">إخلاء مسؤولية:</span> هذه الحاسبة أداة مساعدة تقديرية، ولا تُعد فتوى شرعية أو رأيًا ملزمًا. تختلف النتيجة بحسب نية التملك، والمنهجية الشرعية، والبيانات المتاحة. عند الحاجة إلى فتوى خاصة أو حساب أدق، يُرجى الرجوع إلى جهة الإفتاء أو المستشار الشرعي المختص.
-  </div>
+  <div style="margin-top:12px;font-size:12px;color:rgba(215,226,255,0.45);background:var(--bg-high);border-radius:8px;padding:10px 12px;line-height:1.8"><span style="color:var(--gold)">تنبيه:</span> الطريقة العامة تحتاج إلى القيمة الدفترية للسهم حتى يكتمل الاحتساب على صورته الأصلية، أما الطرق التقديرية فهي تقريبية للمساعدة والتنظيم فقط.</div>
+  <div style="margin-top:8px;font-size:11px;color:rgba(215,226,255,0.35);background:var(--bg-high);border-radius:8px;padding:10px 12px;line-height:1.8"><span style="color:rgba(215,226,255,0.5)">إخلاء مسؤولية:</span> هذه الحاسبة أداة مساعدة تقديرية، ولا تُعد فتوى شرعية أو رأيًا ملزمًا. تختلف النتيجة بحسب نية التملك، والمنهجية الشرعية، والبيانات المتاحة. عند الحاجة إلى فتوى خاصة أو حساب أدق، يُرجى الرجوع إلى جهة الإفتاء أو المستشار الشرعي المختص.</div>
   <button class="clear-btn" onclick="clearAll()"><span class="material-symbols-outlined">delete_sweep</span>مسح</button>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+  </div>
+  <div class="footer-copy">© 2026 حاسبتي المالية. جميع الحقوق محفوظة.</div>
+</footer>
+<script src="shared.js"></script>
 <script>
-function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('open')}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open')}
-function fmt(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n)}
-function fI(n){return new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.round(n))}
-function show(id){document.getElementById(id).style.display='block'}
-function hide(id){document.getElementById(id).style.display='none'}
-function V(id){return +(document.getElementById(id).value)||0}
 let zsMarketMode='saudi',zsMethodMode='general';
-const defR={USD:1,SAR:3.75};let lR=null;
-async function loadRate(){try{const res=await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json');const d=await res.json();if(d&&d.usd&&d.usd.sar){lR={SAR:d.usd.sar}}}catch(e){}}
-function getRate(){return lR?lR.SAR:3.75}
-function zsMarket(m){zsMarketMode=m;document.getElementById('zs-saudi').style.display=m==='saudi'?'block':'none';document.getElementById('zs-us').style.display=m==='us'?'block':'none';document.getElementById('zsM1').classList.toggle('active',m==='saudi');document.getElementById('zsM2').classList.toggle('active',m==='us');hide('zsRes');zsAutoFillRate()}
+function zsMarket(m){zsMarketMode=m;document.getElementById('zs-saudi').style.display=m==='saudi'?'block':'none';document.getElementById('zs-us').style.display=m==='us'?'block':'none';document.getElementById('zsM1').classList.toggle('active',m==='saudi');document.getElementById('zsM2').classList.toggle('active',m==='us');hide('zsRes');if(m==='us')zsAutoFillRate()}
 function zsMethod(m){zsMethodMode=m;document.getElementById('zs-general').style.display=m==='general'?'block':'none';document.getElementById('zs-approx').style.display=m==='approx'?'block':'none';document.getElementById('zsS1').classList.toggle('active',m==='general');document.getElementById('zsS2').classList.toggle('active',m==='approx');hide('zsRes')}
-function zsAutoFillRate(){const el=document.getElementById('zsUX');if(!el.value||el.value==='0'){el.value=getRate().toFixed(2)}}
+function zsToggleZP(){document.getElementById('zsAZWrap').style.display=document.getElementById('zsAI').value==='invest'?'block':'none'}
+function zsToggleZPUS(){document.getElementById('zsUZWrap').style.display=document.getElementById('zsUI').value==='invest'?'block':'none'}
+function zsAutoFillRate(){const el=document.getElementById('zsUX');if(!el.value||el.value==='0'){el.value=(gRt().SAR||3.75).toFixed(2)}}
 function cZS(){
   let zakat=0,mkt='',mth='',intent='',qty=0,price=0,totalVal=0,waa=0,showWaa=false,approxNote=false;
   if(zsMarketMode==='saudi'){
@@ -207,19 +144,23 @@ function cZS(){
     if(zsMethodMode==='general'){
       mth='الطريقة العامة';qty=V('zsGQ');price=V('zsGP');const bv=V('zsGB');
       if(qty<=0||price<=0||bv<=0){hide('zsRes');return}
-      totalVal=qty*price;waa=qty*(price-bv);if(waa<0)waa=0;zakat=waa*0.025;showWaa=true;
+      totalVal=qty*price;waa=qty*(price-bv);if(waa<0)waa=0;zakat=waa/40;showWaa=true;
     }else{
-      mth='الطريقة التقديرية';qty=V('zsAQ');price=V('zsAP');const int=document.getElementById('zsAI').value;const zp=V('zsAZ');
-      intent=int==='trade'?'مضاربة':'استثمار';totalVal=qty*price;
+      mth='الطريقة التقديرية';qty=V('zsAQ');price=V('zsAP');
+      const int=document.getElementById('zsAI').value;const zp=V('zsAZ');
+      intent=int==='trade'?'مضاربة':'استثمار';
       if(qty<=0||price<=0){hide('zsRes');return}
+      totalVal=qty*price;
       if(int==='trade'){zakat=totalVal*0.025}
       else{if(zp>0){waa=qty*zp;zakat=waa*0.025;showWaa=true}else{zakat=totalVal*0.025;approxNote=true}}
     }
   }else{
     mkt='السوق الأمريكي';mth='تقديرية';
-    qty=V('zsUQ');const priceUSD=V('zsUP');const xRate=V('zsUX')||getRate();const int=document.getElementById('zsUI').value;const zp=V('zsUZ');
-    intent=int==='trade'?'مضاربة':'استثمار';price=priceUSD;totalVal=qty*priceUSD*xRate;
+    qty=V('zsUQ');const priceUSD=V('zsUP');const xRate=V('zsUX')||3.75;
+    const int=document.getElementById('zsUI').value;const zp=V('zsUZ');
+    intent=int==='trade'?'مضاربة':'استثمار';price=priceUSD;
     if(qty<=0||priceUSD<=0){hide('zsRes');return}
+    totalVal=qty*priceUSD*xRate;
     if(int==='trade'){zakat=totalVal*0.025}
     else{if(zp>0){waa=qty*zp*xRate;zakat=waa*0.025;showWaa=true}else{zakat=totalVal*0.025;approxNote=true}}
   }
@@ -236,8 +177,12 @@ function cZS(){
   document.getElementById('zsRWa').textContent=showWaa?fmt(waa):'-';
   document.getElementById('zsApproxNote').style.display=approxNote?'block':'none';
 }
-function clearAll(){['zsGQ','zsGP','zsGB','zsAQ','zsAP','zsAZ','zsUQ','zsUP','zsUX','zsUZ'].forEach(id=>{document.getElementById(id).value=''});zsMarket('saudi');zsMethod('general');document.getElementById('zsAI').value='trade';document.getElementById('zsUI').value='trade';hide('zsRes')}
-loadRate().then(()=>zsAutoFillRate());
+function clearAll(){
+  ['zsGQ','zsGP','zsGB','zsAQ','zsAP','zsAZ','zsUQ','zsUP','zsUX','zsUZ'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+  document.getElementById('zsAI').value='trade';document.getElementById('zsUI').value='trade';
+  zsToggleZP();zsToggleZPUS();zsMarket('saudi');zsMethod('general');hide('zsRes');
+}
+loadR().then(()=>zsAutoFillRate());
 </script>
 </body>
 </html>

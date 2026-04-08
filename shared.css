@@ -96,3 +96,16 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',s
   .compound-stats{flex-wrap:wrap}
   .compound-stat{min-width:calc(50% - 3px);flex:none}
 }
+
+/* Sidebar categories & links */
+.sidebar-cat{padding:14px 20px 6px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.5px}
+.sidebar-link{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--text-sub);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.15s}
+.sidebar-link:hover,.sidebar-link.active{background:rgba(229,194,125,0.08);color:var(--cream)}
+.sidebar-link .material-symbols-outlined{font-size:20px;color:var(--teal)}
+.sidebar-link.active .material-symbols-outlined{color:var(--gold)}
+.sidebar-home{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--gold);text-decoration:none;font-size:14px;font-weight:700;border-bottom:0.5px solid rgba(229,194,125,0.1)}
+.sidebar-home .material-symbols-outlined{font-size:20px}
+.sidebar-footer{margin-top:auto;padding:20px;border-top:0.5px solid rgba(229,194,125,0.1);display:flex;flex-direction:column;gap:8px}
+.sidebar-footer a{color:var(--text-sub);text-decoration:none;font-size:13px;transition:color 0.2s}
+.sidebar-footer a:hover{color:var(--gold)}
+.sidebar-copy{font-size:11px;color:var(--text-sub);opacity:0.5;margin-top:4px}
