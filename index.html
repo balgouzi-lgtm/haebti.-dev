@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#001231">
+<title>حاسبتي المالية - الأدوات المالية الذكية</title>
+<meta name="description" content="إحدى عشرة أداة مالية ذكية تساعدك في إدارة استثماراتك وحساباتك بسهولة ودقة عالية.">
+<meta property="og:title" content="حاسبتي المالية">
+<meta property="og:description" content="أدواتك المالية في مكان واحد — إحدى عشرة حاسبة مالية ذكية.">
+<meta property="og:url" content="https://www.hasebti.com">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#001231;--bg-low:#011a3f;--bg-container:#051f43;--bg-high:#13294e;--bg-highest:#1f345a;--bg-bright:#24395f;--bg-darkest:#000d27;
+  --gold:#e5c27d;--gold-dim:#ffdea1;--gold-container:#362600;--gold-on:#402d00;
+  --teal:#6edab4;--cream:#F4EFDF;--text:#d7e2ff;--text-sub:#c4c6cf;--red:#ffb4ab;
+}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans Arabic',sans-serif;min-height:100vh;direction:rtl}
+.top-bar{background:var(--bg-darkest);display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:64px;position:sticky;top:0;z-index:50}
+.logo-wrap{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:700;color:var(--cream);text-decoration:none}
+.logo-icon{background:var(--gold-container);padding:4px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-icon .material-symbols-outlined{color:var(--gold);font-size:24px}
+.hero{text-align:center;padding:48px 24px 16px;max-width:900px;margin:0 auto}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:700;color:var(--cream);margin-bottom:16px;line-height:1.3}
+.hero p{font-size:clamp(16px,2.5vw,20px);color:var(--text-sub);margin-bottom:0;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7}
+.tools-section{padding:32px 24px 48px;max-width:1100px;margin:0 auto}
+.cat-title{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.cat-title .material-symbols-outlined{font-size:20px}
+.cat-block{margin-bottom:32px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.tool-card{padding:20px;border-radius:12px;cursor:pointer;transition:background 0.2s,transform 0.15s;display:flex;gap:14px;align-items:center;text-decoration:none}
+.tool-card:hover{background:var(--bg-bright);transform:translateY(-2px)}
+.tool-card .material-symbols-outlined{color:var(--teal);font-size:28px;flex-shrink:0}
+.tool-card h4{font-size:16px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.tool-card p{font-size:12px;color:var(--text-sub);line-height:1.5}
+.bg-high{background:var(--bg-high)}.bg-container{background:var(--bg-container)}.bg-low{background:var(--bg-low)}.bg-highest{background:var(--bg-highest)}
+.site-footer{background:var(--bg-darkest);padding:32px 24px;text-align:center;border-top:0.5px solid rgba(229,194,125,0.1)}
+.footer-links{display:flex;justify-content:center;gap:32px;margin-bottom:16px;flex-wrap:wrap}
+.footer-links a{color:var(--text-sub);text-decoration:none;font-size:14px;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{color:var(--text-sub);font-size:13px;opacity:0.6}
+@media(max-width:600px){
+  .tools-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <a href="index.html" class="logo-wrap"><div class="logo-icon"><span class="material-symbols-outlined">bar_chart</span></div><span>حاسبتي المالية</span></a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>أدواتك المالية في مكان واحد</h1>
+    <p>إحدى عشرة أداة مالية ذكية تساعدك في إدارة استثماراتك وحساباتك بسهولة ودقة عالية.</p>
+  </section>
+
+  <section class="tools-section">
+
+    <!-- فئة الأسهم والمحفظة -->
+    <div class="cat-block">
+      <div class="cat-title"><span class="material-symbols-outlined">show_chart</span>الأسهم والمحفظة</div>
+      <div class="tools-grid">
+        <a class="tool-card bg-high" href="stocks.html"><span class="material-symbols-outlined">show_chart</span><div><h4>حاسبة متوسط السهم</h4><p>احسب متوسط سعر الشراء لمحفظتك بعد عمليات التعديل والتعزيز.</p></div></a>
+        <a class="tool-card bg-container" href="profit.html"><span class="material-symbols-outlined">monitoring</span><div><h4>الربح والخسارة</h4><p>تقييم سريع لأداء صفقاتك ومعرفة صافي الأرباح.</p></div></a>
+        <a class="tool-card bg-low" href="split.html"><span class="material-symbols-outlined">call_split</span><div><h4>تقسيم الأسهم</h4><p>معالجة بيانات المحفظة بعد التجزئة أو التجزئة العكسية.</p></div></a>
+        <a class="tool-card bg-highest" href="dividend.html"><span class="material-symbols-outlined">savings</span><div><h4>توزيعات الأرباح</h4><p>حساب عوائد التوزيعات السنوية لمحفظتك.</p></div></a>
+        <a class="tool-card bg-high" href="breakeven.html"><span class="material-symbols-outlined">center_focus_strong</span><div><h4>نقطة التعادل</h4><p>اعرف متى تبدأ بتحقيق الأرباح بعد الخسارة.</p></div></a>
+        <a class="tool-card bg-container" href="compound.html"><span class="material-symbols-outlined">account_balance</span><div><h4>الفائدة المركبة</h4><p>توقع نمو استثماراتك على المدى البعيد بقوة التراكم.</p></div></a>
+      </div>
+    </div>
+
+    <!-- فئة الزكاة -->
+    <div class="cat-block">
+      <div class="cat-title"><span class="material-symbols-outlined">volunteer_activism</span>الزكاة</div>
+      <div class="tools-grid">
+        <a class="tool-card bg-low" href="zakat.html"><span class="material-symbols-outlined">volunteer_activism</span><div><h4>حاسبة الزكاة</h4><p>حساب مقدار الزكاة الواجبة على أموالك ومدخراتك.</p></div></a>
+        <a class="tool-card bg-highest" href="zakats.html"><span class="material-symbols-outlined">mosque</span><div><h4>زكاة الأسهم</h4><p>حساب زكاة محفظتك في السوق السعودي والأمريكي بعدة طرق.</p></div></a>
+      </div>
+    </div>
+
+    <!-- فئة الذهب والعملات والتمويل -->
+    <div class="cat-block">
+      <div class="cat-title"><span class="material-symbols-outlined">payments</span>الذهب والعملات والتمويل</div>
+      <div class="tools-grid">
+        <a class="tool-card bg-container" href="gold.html"><span class="material-symbols-outlined">payments</span><div><h4>متوسط تكلفة الذهب</h4><p>تتبع استثماراتك في المعدن الأصفر بدقة عالية.</p></div></a>
+        <a class="tool-card bg-low" href="currency.html"><span class="material-symbols-outlined">currency_exchange</span><div><h4>محول العملات</h4><p>أسعار صرف لحظية للتحويل بين العملات العالمية والمحلية.</p></div></a>
+        <a class="tool-card bg-high" href="loan.html"><span class="material-symbols-outlined">calculate</span><div><h4>حاسبة القرض</h4><p>جدولة الأقساط ومعرفة إجمالي الفوائد.</p></div></a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="about.html">من نحن</a>
+    <a href="terms.html">الشروط والأحكام</a>
+    <a href="privacy.html">سياسة الخصوصية</a>
+  </div>
+  <div class="footer-copy">© 2026 حاسبتي المالية. جميع الحقوق محفوظة.</div>
+</footer>
+</body>
+</html>
